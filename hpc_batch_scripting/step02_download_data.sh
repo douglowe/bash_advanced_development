@@ -13,15 +13,18 @@
 . functions_date_math.sh
 . functions_download.sh
 
+module unload tools/env/proxy2
+
 
 # count number of scenarios:
 end_index=$(ls -1 scenario_settings/download_number_* | wc -l)
 
 index=$((SGE_TASK_ID-1))
 
+step=${SGE_TASK_LAST} 
 
 
-while [[ $index -le $end_index ]] ; do
+while [[ $index -lt $end_index ]] ; do
 
 	down_settings=$(printf 'scenario_settings/download_number_%.4i.txt' $index)
 
@@ -44,7 +47,7 @@ while [[ $index -le $end_index ]] ; do
 	fi
 
 
-	((index+=10))
+	((index+=$step))
 
 done
 

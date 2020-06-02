@@ -27,6 +27,12 @@ template_download='scenario_settings/download_template.txt'
 scen_number=0
 down_number=0
 
+
+[[ -d stats_analysis ]] || mkdir stats_analysis 
+[[ -d meteograms ]] || mkdir meteograms
+
+
+
 while [ "$day" != "$endday" ] || [ "$month" != "$endmonth" ] || [ "$year" != "$endyear" ] ; do
 
 

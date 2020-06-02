@@ -1,55 +1,30 @@
+#!/bin/bash --login
+#$ -cwd
+#$ -t 1-15
+#
 #
 #  Script for organising running the analysis scripts for ManUniCast stats extraction.
 #
 
-start_scenario=0
-end_scenario=100
+# count number of scenarios:
+end_index=$(ls -1 scenario_settings/scen_number_* | wc -l)
+
+index=$((SGE_TASK_ID-1))
+
+step=${SGE_TASK_LAST} 
 
 
-scen_number=$start_scenario
+while [[ $index -lt $end_index ]] ; do
 
-success=0
-required=$(($end_scenario-$start_scenario))
-
-rm log_*.txt
-
-
-while [[ scen_number -le end_scenario ]]; do
-
-	scenario_file=$(printf 'scenario_settings/scen_number_%.4i.txt' $scen_number)
-	log_file=$(printf 'log_%.4i.txt' $scen_number)
-
-	bash basic_data_statistics.sh $scenario_file && echo "done" > $log_file || echo "failed" > $log_file &
-
-	let scen_number+=1
-
-done
-
-
-while [[ $success -lt $required ]]; do
-
-	sleep 2
-	
 	success=0
-	scen_number=$start_scenario
 	
-	while [[ scen_number -le end_scenario ]]; do
-		log_file=$(printf 'log_%.4i.txt' $scen_number)
-		
-		if [ -e $log_file ]; then
-			if [ $(grep 'done' $log_file) ]; then
-				let success+=1
-			else
-				rm $log_file
-				bash basic_data_statistics.sh $scenario_file && echo "done" > $log_file || echo "failed" > $log_file &
-			fi
-		fi
-		
-		let scen_number+=1
+	while [[ $success -lt 1 ]] ; do
+		echo "calculate stats for scenario $index"
+		scenario_file=$(printf 'scenario_settings/scen_number_%.4i.txt' $index)
+		bash basic_data_statistics.sh $scenario_file && ((success+=1)) || echo "  failed..."
 	done
 	
-	echo "finished scenarios = $success"
 
+	((index+=$step))
 done
 
-echo "finished"
