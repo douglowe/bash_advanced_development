@@ -1,3 +1,6 @@
+#
+# Script for creating the configuration files for running the meteogram analysis.
+#
 
 
 . functions_date_math.sh

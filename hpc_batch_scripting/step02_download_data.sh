@@ -2,12 +2,7 @@
 #$ -cwd
 #$ -t 1-10
 #
-# Final (local) report writing script (2)
-#
-#   This script should:
-#      1) (robustly) find a given date/time in all files for a list of given station locations
-#      2) pull all data out for that date/time
-#      3) write out reports of the changes / range of these for each station
+# Script for downloading the ManUniCast meteogram data using a job array.
 #
 
 . functions_date_math.sh
