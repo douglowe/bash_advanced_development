@@ -10,7 +10,7 @@ through the development of all the code here is probably too much). The classes 
 3) BASH logic and maths
 4) advanced loops (while)
 6) sed and regex
-7a) AWK?
-7b) Crontab regular job scripting?
+7) AWK?
+7) Crontab regular job scripting?
 8) HPC batch scripting
 9) Condor batch scripting
