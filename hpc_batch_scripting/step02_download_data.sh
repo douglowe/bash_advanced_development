@@ -27,10 +27,10 @@ while [[ $index -le $end_index ]] ; do
 
 	. $down_settings
 	
-	if check_data_exists $web_dir ; then
-		echo "directory $web_dir exists"
+	if check_data_exists $webdir ; then
+		echo "directory $webdir exists"
 
-		address=${web_dir}${webfile}
+		address=${webdir}${webfile}
 		
 		if check_data_exists $address ; then
 			echo "downloading file $webfile"

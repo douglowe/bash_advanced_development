@@ -25,7 +25,7 @@ check_data_exists () {
 
 
 download_save_data () {
-	[ -e $storage_dir ] || mkdir -p $storage_dir || { echo "exiting download_save_data, see error" ; exit 1; }
-	wget --no-cache -nd -nv -N $address -P $storage_dir 
+	[ -e $2 ] || mkdir -p $2 || { echo "exiting download_save_data, see error" ; exit 1; }
+	wget --no-cache -nd -nv -N $1 -P $2 
 	return 0
 }
