@@ -36,7 +36,8 @@ down_number=0
 while [ "$day" != "$endday" ] || [ "$month" != "$endmonth" ] || [ "$year" != "$endyear" ] ; do
 
 
-	web_dir='http://manunicast.seaes.manchester.ac.uk/charts/manunicast/'${year}${month}${day}'/d02/meteograms/'
+	web_dir='http://nataas.itservices.manchester.ac.uk:8080/charts/manunicast/'${year}${month}${day}'/d02/meteograms/'
+	#web_dir='http://manunicast.seaes.manchester.ac.uk/charts/manunicast/'${year}${month}${day}'/d02/meteograms/'
 	read getyear getmonth getday <<< $(determine_next_date - 1 $year $month $day)
 	storage_dir='meteograms/'${year}${month}${day}
 
