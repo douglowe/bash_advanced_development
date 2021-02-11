@@ -46,3 +46,8 @@ more complex workflows to finish.
 The step 3 script calls the `basic_data_statistics.sh` script for each scenario you wish
 to process - when it does this it passes the scenario configuration file as an argument, and
 this script then sources that file, to read in the scenario settings.
+
+The files `maximum.awk`, `minimum.awk`, `sum.awk` and `average.awk` are scripts for the AWK
+program, a powerful bash program for processing data files. It wasn't covered in the course,
+but if you would like to learn more about it, you can read a guide on getting started
+[here](https://www.gnu.org/software/gawk/manual/gawk.html#Getting-Started).
