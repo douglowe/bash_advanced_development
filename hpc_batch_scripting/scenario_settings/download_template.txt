@@ -1,5 +1,0 @@
-# Configuration file for downloading ManUniCast meteogram data
-webdir=%%WEBDIR%%
-webfile=%%WEBFILE%%
-storagedir=%%STDIR%%
-
