@@ -1,6 +1,9 @@
 #
 #  Script for organising running the analysis scripts for ManUniCast stats extraction.
 #
+#  Here we set the start and end scenario numbers explicitly. You will want to check 
+#  what scenarios are available in the scenario_settings directory when you set these.
+#
 
 start_scenario=0
 end_scenario=100

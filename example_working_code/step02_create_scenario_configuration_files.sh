@@ -1,3 +1,9 @@
+#
+#  This script will create the configuration files needed for step 3 from a
+#  template file in the 'scenario_settings' folder.
+#
+#  Each of these scenarios will be for a single day, station, and meteorological variable.
+#
 
 
 . functions_date_math.sh
