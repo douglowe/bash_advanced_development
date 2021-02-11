@@ -1,3 +1,8 @@
+#
+#  This script runs basic stats analysis on a scenario defined in the
+#  scenario settings file that will be passed as an argument to this script.
+#  It is designed to be run by step 3 script.
+#  
 
 . functions_date_math.sh
 . functions_read_data.sh
@@ -18,7 +23,8 @@
 #storage_dir='meteograms/'${year}${month}${day}
 storage_dir=${data_dir}${year}${month}${day}
 
-
+# check that the stats directory exists, if not then create it
+[ -e $stats_dir ] || mkdir -p $stats_dir
 
 # set the get date, for the file names
 read getyear getmonth getday <<< $(determine_next_date - 1 $year $month $day)
@@ -31,8 +37,8 @@ address=${storage_dir}/${data_file}
 read_dataline $address $variable
 
 # introduce a random delay to this process
-#random_delay
-random_delay_break
+random_delay
+#random_delay_break
 
 # calculate the basic statistics for our data
 read minimum <<< $(printf '%s\n' "${data_array[@]}" | awk -f minimum.awk)
